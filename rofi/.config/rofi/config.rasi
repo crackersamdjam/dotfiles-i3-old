@@ -1,0 +1,9 @@
+configuration {
+    modi: "window,drun,run,ssh";
+    terminal: "xterm";
+    kb-move-word-back: "Alt+b,Shift+Left";
+    kb-move-word-forward: "Alt+f,Shift+Right";
+    kb-mode-next: "Control+Right";
+    kb-mode-previous: "Control+Left";
+}
+@theme "arc-dark"

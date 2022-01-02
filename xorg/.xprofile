@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+# ~/.xprofile
+# this is an edited version of .xinitrc that lightdm will source through /etc/lightdm/Xsession
+
+
+# Ensure that GTK themes are applied uniformly in the Desktop Environment
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+eval $(/usr/bin/gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+
+# Set scaling
+# https://ricostacruz.com/til/fractional-scaling-on-xorg-linux
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SET_FACTOR=0
+export QT_SCALE_FACTOR=2
+export QT_FONT_DPI=96
+
+# https://wiki.archlinux.org/index.php/IBus#Other_desktop_environments
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS="@im=ibus"
+# https://programmersought.com/article/24415201436/
+#export GTK_IM_MODULE=fcitx
+#export QT_IM_MODULE=fcitx
+#export XMODIFIERS="@im=fcitx"
+
+#xrandr --setprovideroutputsource modesetting NVIDIA-0
+#xrandr --auto
+#xrandr -q > test.txt
+intern=eDP-1-1
+extern0=DP-0
+extern1=DP-1
+if xrandr | grep "$extern0 connected"; then
+    xrandr --output $intern --off --output $extern0 --auto --output $extern1 --off
+    echo "Switched to external display 0" > info/display.txt
+elif xrandr | grep "$extern1 connected"; then
+    xrandr --output $intern --off --output $extern0 --off --output $extern1 --auto
+    echo "Switched to external display 1" > info/display.txt
+else
+    xrandr --output $intern --auto --output $extern0 --off --output $extern1 --off
+    echo "Switched to internal display" > info/display.txt
+fi
+
+# color scheme
+#xrdb -merge $HOME/.Xresources.d/custom
+

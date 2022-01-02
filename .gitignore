@@ -1,0 +1,5 @@
+nvim/.config/nvim/plugged/
+nvim/.config/nvim/.netrwhist
+ranger/.config/ranger/plugins/
+ranger/.config/ranger/__pycache__/
+
