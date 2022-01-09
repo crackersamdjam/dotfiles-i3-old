@@ -3,12 +3,10 @@ set nocompatible | filetype indent plugin on | syn on
 
 set autoindent
 set nomodeline " disable modeline vulnerability
-
 set encoding=utf8
 
 " https://vim.fandom.com/wiki/Indenting_source_code
-set shiftwidth=4 tabstop=4 noexpandtab
-set shiftround
+set shiftwidth=4 tabstop=4 noexpandtab shiftround
 autocmd FileType python setlocal shiftwidth=4 tabstop=4 noexpandtab
 
 set backspace=indent,eol,start
@@ -16,8 +14,7 @@ set hidden
 set laststatus=2
 
 " Set linenumbers
-set number
-set relativenumber
+set number relativenumber
 set wrap
 
 " column ruler at 100
@@ -25,11 +22,7 @@ set wrap
 " set colorcolumn=80
 
 " Highlight searching
-set incsearch
-set showmatch
-set hlsearch
-set ignorecase
-set smartcase
+set incsearch showmatch hlsearch ignorecase smartcase
 
 if has("nvim")
     set inccommand="nosplit"
@@ -45,6 +38,7 @@ set clipboard+=unnamedplus
 
 " https://github.com/Ninjaclasher/scripts-and-config/blob/master/dotfiles/nvim/.config/nvim/init.vim
 set background=light
+hi QuickFixLine guibg=Black
 
 
 " ===== Autoload =====
@@ -79,18 +73,18 @@ Plug 'ajh17/vimcompletesme'
 call plug#end()
 
 if executable('clangd')
-    augroup lsp_clangd
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
-                    \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-                    \ })
-        autocmd FileType c setlocal omnifunc=lsp#complete
-        autocmd FileType cpp setlocal omnifunc=lsp#complete
-        autocmd FileType objc setlocal omnifunc=lsp#complete
-        autocmd FileType objcpp setlocal omnifunc=lsp#complete
-    augroup end
+	augroup lsp_clangd
+		autocmd!
+		autocmd User lsp_setup call lsp#register_server({
+					\ 'name': 'clangd',
+					\ 'cmd': {server_info->['clangd']},
+					\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+					\ })
+		autocmd FileType c setlocal omnifunc=lsp#complete
+		autocmd FileType cpp setlocal omnifunc=lsp#complete
+		autocmd FileType objc setlocal omnifunc=lsp#complete
+		autocmd FileType objcpp setlocal omnifunc=lsp#complete
+	augroup end
 endif
 
 
@@ -159,22 +153,18 @@ let b:tex_stylish=1
 let g:vimtex_quickfix_open_on_warning=0
 let g:vimtex_quickfix_mode=0
 let g:vimtex_view_general_viewer='zathura'
+let g:vimtex_compiler_latexmk={'build_dir':'aux'}
 let g:vimtex_syntax_packages={'amsmath':{'load':2}, 'tikz':{'load':2}, 'markdown':{'load':2}}
 "`load`  Specify when to load the package syntax addon.
 "      0 = disable this syntax package
 "      1 = enable this syntax package if it is detected (DEFAULT)
 "      2 = always enable this syntax package
-
-hi QuickFixLine guibg=Black
-
-"https://wikimatze.de/vimtex-the-perfect-tool-for-working-with-tex-and-vim/
-let g:vimtex_view_method='zathura'
+let g:vimtex_view_method='zathura' "https://wikimatze.de/vimtex-the-perfect-tool-for-working-with-tex-and-vim/
 
 
 " === YCM (YouCompleteMe) ===
 " https://github.com/plasmatic1/competitive-programming-environment/blob/master/.vimrc#L107
 let g:ycm_global_ycm_extra_conf = '~/.config/nvim/ycm_global_extra_conf.py'
-
 let g:ycm_min_num_of_chars_for_completion = 0
 let g:ycm_min_num_identifier_candidate_chars = 1
 let g:ycm_max_num_candidates = 20
@@ -194,7 +184,7 @@ let g:airline_theme='onedark'
 "colorscheme solarized
 
 " Vim-Easymotion highlight colours
-" Source: https://stackoverflow.com/questions/6126871/easymotion-coloring-in-vim-with-solarized-theme
+" source: https://stackoverflow.com/questions/6126871/easymotion-coloring-in-vim-with-solarized-theme
 "hi link EasyMotionTarget ErrorMsg
 "hi link EasyMotionShade  Comment
 
