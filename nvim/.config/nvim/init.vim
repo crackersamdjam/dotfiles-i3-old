@@ -159,7 +159,11 @@ let b:tex_stylish=1
 let g:vimtex_quickfix_open_on_warning=0
 let g:vimtex_quickfix_mode=0
 let g:vimtex_view_general_viewer='zathura'
-let g:vimtex_syntax_autoload_packages=['amsmath','tikz','markdown']
+let g:vimtex_syntax_packages={'amsmath':{'load':2}, 'tikz':{'load':2}, 'markdown':{'load':2}}
+"`load`  Specify when to load the package syntax addon.
+"      0 = disable this syntax package
+"      1 = enable this syntax package if it is detected (DEFAULT)
+"      2 = always enable this syntax package
 
 hi QuickFixLine guibg=Black
 
