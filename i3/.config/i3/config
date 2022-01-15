@@ -29,8 +29,8 @@ bindsym $mod+n border normal
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec terminal
 bindsym $mod+Return exec xterm
+bindsym $mod+Shift+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill

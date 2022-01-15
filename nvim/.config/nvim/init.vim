@@ -44,9 +44,9 @@ hi QuickFixLine guibg=Black
 " ===== Autoload =====
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin()
@@ -59,17 +59,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'francoiscabrol/ranger.vim'
 Plug 'altercation/vim-colors-solarized'
-
 " YCM https://github.com/ecnerwala/dotfiles/blob/master/vim/.config/nvim/init.vim
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
 
+" I'm now using vim-lsp instead of YCM
 " https://codeforces.com/blog/entry/67828?#comment-520439
 " https://jonasdevlieghere.com/vim-lsp-clangd/
-" I'm now using vim-lsp instead of YCM
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'ajh17/vimcompletesme'
-
 call plug#end()
 
 if executable('clangd')
@@ -91,30 +89,38 @@ endif
 " ===== Run commands =====
 
 function! Run()
+	w
 	let file_name = expand('%:t:r')
 	let extension = expand('%:e')
-	" Todo: different cmd for different files
 	
-	" same command as for subl
-	let output = execute('!ulimit -s unlimited -v 2097152 && g++ -DLOCAL -std=c++17 -O2 -march=native -Wfatal-errors -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-unused-parameter -Wno-misleading-indentation '.@%.' -o '.file_name)
-	if v:shell_error != 0
-		echo 'Compilation Failed'
-		"echo '\u001b[31mCompilation Failed\u001b[0m'
-		echo output
+	if index(['cpp', 'cc', 'c++'], extension) >= 0
+		let output = execute('!ulimit -s unlimited -v 2097152 && g++ -DLOCAL -std=c++17 -O2 -march=native -Wfatal-errors -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-unused-parameter -Wno-misleading-indentation '.@%.' -o '.file_name)
+		
+		if v:shell_error != 0
+			echo 'Compilation Failed'
+			"echo '\u001b[31mCompilation Failed\u001b[0m'
+			echo output
+			return
+		endif
+
+		"let output = execute('!timeout 3s ./' . file_name  . ' < in > out 2> err; cat err | grep ' . file_name . ' > ferr || true')
+		execute('!timeout 3s ./'.file_name.' < in > out 2> err')
+		if v:shell_error != 0
+			echo 'Run Failed'
+			"echo output
+			return
+		endif
+	
+	else
+		echo 'Invalid extension'
 		return
 	endif
-	"let output = execute('!timeout 3s ./' . file_name  . ' < in > out 2> err; cat err | grep ' . file_name . ' > ferr || true')
-	execute('!timeout 3s ./'.file_name.' < in > out 2> err')
-	if v:shell_error != 0
-		echo 'Run Failed'
-		"echo output
-		return
-	endif
+
 	echo 'Success'
 endfunction
 
 function! Debug()
-	echo 'hmmmm'
+	echo 'Not yet implemented'
 endfunction
 
 :map <M-r> :call Run()<Cr>
@@ -147,7 +153,6 @@ let g:instant_markdown_slow=1
 let g:instant_markdown_autostart=0
 let g:instant_markdown_mathjax=1
 
-
 let g:tex_flavor='latex'
 let b:tex_stylish=1
 let g:vimtex_quickfix_open_on_warning=0
@@ -171,7 +176,7 @@ let g:ycm_max_num_candidates = 20
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_auto_trigger = 1
 
-" === Airline Themes ===
+" === Theme ===
 " https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline_theme='onedark'
 
