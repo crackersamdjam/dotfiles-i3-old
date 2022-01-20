@@ -1,4 +1,3 @@
-" put this line first in ~/.vimrc
 set nocompatible | filetype indent plugin on | syn on
 
 set autoindent
@@ -41,7 +40,7 @@ set background=light
 hi QuickFixLine guibg=Black
 
 
-" ===== Autoload =====
+" ===== Plugins =====
 
 if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
 	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
@@ -51,7 +50,7 @@ endif
 
 call plug#begin()
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mbbill/undotree'
@@ -70,6 +69,7 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'ajh17/vimcompletesme'
 call plug#end()
 
+" clangd arugments in compile_flags.txt
 if executable('clangd')
 	augroup lsp_clangd
 		autocmd!
@@ -136,14 +136,13 @@ function! CP(extra_args)
 	sp|view out
 	sp|view err
 	call feedkeys("\<C-w>l") "go back to main window on right
-	call feedkeys("\<C-w>50>") "resize
+	call feedkeys("\<C-w>40>") "resize
 endfunction
-command! -nargs=* CP call CP( '<args>' )
+command! -nargs=* CP call CP('<args>')
 
 
 " ===== Plugins =====
 
-" do these two go in plugins?
 "let g:usemarks=0
 " don't need this since it's for lh-brackets? (which I removed)
 "let g:cb_jump_over_newlines=0

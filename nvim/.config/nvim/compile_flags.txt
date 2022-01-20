@@ -1,0 +1,3 @@
+-fsyntax-only
+-std=c++17
+
