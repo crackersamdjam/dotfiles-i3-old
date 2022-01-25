@@ -495,3 +495,6 @@ exec --no-startup-id ibus-daemon -drx
 #exec --no-startup-id eval $(/usr/bin/gnome-keyring-daemon --start)
 #exec --no-startup-id export SSH_AUTH_SOCK
 
+# https://github.com/Syphdias/i3-chrome-tab-dragging
+exec_always --no-startup-id ~/.config/i3/i3-chrome-tab-dragging/i3-chrome-tab-dragging.py
+

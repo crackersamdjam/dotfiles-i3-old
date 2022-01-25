@@ -47,11 +47,11 @@ xterm*metaSendsEscape: true
 ! Lighter background
 !XTerm*background: #2E3436
 
-! Same colour as sublime background
+! Sublime background: #1A1E24
 !XTerm*background: #1A1E24
-*background: #1A1E24
+*background: #000000
 !XTerm*foreground: #D3D7CF
-*foreground: #D3D7CF
+*foreground: #DDDDDD
 
 ! Light mode
 !XTerm*background: #EEEEEC

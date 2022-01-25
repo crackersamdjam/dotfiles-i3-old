@@ -67,6 +67,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'ajh17/vimcompletesme'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " clangd arugments in compile_flags.txt
@@ -95,14 +96,12 @@ function! Run()
 	
 	if index(['cpp', 'cc', 'c++'], extension) >= 0
 		let output = execute('!ulimit -s unlimited -v 2097152 && g++ -DLOCAL -std=c++17 -O2 -march=native -Wfatal-errors -Wall -Wextra -Wshadow -Wformat=2 -Wfloat-equal -Wconversion -Wlogical-op -Wshift-overflow=2 -Wduplicated-cond -Wcast-qual -Wcast-align -Wno-unused-result -Wno-unused-parameter -Wno-misleading-indentation '.@%.' -o '.file_name)
-		
 		if v:shell_error != 0
 			echo 'Compilation Failed'
 			"echo '\u001b[31mCompilation Failed\u001b[0m'
 			echo output
 			return
 		endif
-
 		"let output = execute('!timeout 3s ./' . file_name  . ' < in > out 2> err; cat err | grep ' . file_name . ' > ferr || true')
 		execute('!timeout 3s ./'.file_name.' < in > out 2> err')
 		if v:shell_error != 0
@@ -110,7 +109,20 @@ function! Run()
 			"echo output
 			return
 		endif
-	
+
+	elseif index(['c'], extension) >= 0
+		let output = execute('!ulimit -s unlimited -v 2097152 && gcc -std=c99 -Wall '.@%.' -o '.file_name)
+		if v:shell_error != 0
+			echo 'Compilation Failed'
+			echo output
+			return
+		endif
+		execute('!timeout 3s ./'.file_name.' < in > out 2> err')
+		if v:shell_error != 0
+			echo 'Run Failed'
+			"echo output
+			return
+		endif
 	else
 		echo 'Invalid extension'
 		return
@@ -140,6 +152,13 @@ function! CP(extra_args)
 endfunction
 command! -nargs=* CP call CP('<args>')
 
+" To retab
+" https://stackoverflow.com/a/9105889
+" :set tabstop=2      " To match the sample file
+" :set noexpandtab    " Use tabs, not spaces
+" :%retab!            " Retabulate the whole file
+" To show whether spaces or tabs:
+nnoremap    <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " ===== Plugins =====
 
