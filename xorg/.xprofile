@@ -18,6 +18,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_AUTO_SCREEN_SET_FACTOR=0
 export QT_SCALE_FACTOR=2
 export QT_FONT_DPI=96
+# Flatpak gtk apps will be too large when I do this...
+
 
 # https://wiki.archlinux.org/index.php/IBus#Other_desktop_environments
 export GTK_IM_MODULE=ibus

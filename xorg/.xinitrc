@@ -3,6 +3,8 @@
 # ~/.xinitrc
 #
 # Executed by startx (run your window manager from here)
+# This is not used by lightdm
+
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap

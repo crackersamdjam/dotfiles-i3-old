@@ -7,58 +7,46 @@ Xft.autohint:  false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
 
-!XTerm*background:        #222D31
-!XTerm*foreground:        #d8d8d8
-!XTerm*pointerColor:      #1ABB9B
-!XTerm*faceName:          Fixed
-!XTerm*faceSize:          11
-!XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
-
 ! Clipboard https://unix.stackexchange.com/questions/276326/configure-xterm-to-use-ctrlshiftc-ctrlshiftv-for-copy-paste
 XTerm*vt100.translations: #override \
     Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
     Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
 
+! https://github.com/saimn/dotfiles/blob/master/Xresources#L44
+xterm*font:           xft:DejaVu Sans Mono:style=Book:size=12
+xterm*boldFont:       xft:DejaVu Sans Mono:style=Bold:size=12
+xterm*italicFont:     xft:DejaVu Sans Mono:style=Oblique:size=12
+xterm*boldItalicFont: xft:DejaVu Sans Mono:style=BoldOblique:size=12
+
 ! Leftover stuff from https://github.com/kuriot/xresources-breeze-theme/blob/master/.Xresources
-xterm*VT100.geometry:     80x25
-xterm*faceName:           Terminus:style=Regular:size=10
+!xterm*VT100.geometry:     80x25
+!xterm*faceName:           Terminus:style=Regular:size=10
 !xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
-xterm*dynamicColors:      true
-xterm*utf8:               2
-xterm*eightBitInput:      true
-xterm*saveLines:          512
-xterm*scrollKey:          true
-xterm*scrollTtyOutput:    false
-xterm*scrollBar:          true
-xterm*rightScrollBar:     true
-xterm*jumpScroll:         true
-xterm*multiScroll:        true
-xterm*toolBar:            false
+!xterm*dynamicColors:      true
+!xterm*utf8:               2
+!xterm*eightBitInput:      true
+!xterm*saveLines:          512
+!xterm*scrollKey:          true
+!xterm*scrollTtyOutput:    false
+!xterm*scrollBar:          true
+!xterm*rightScrollBar:     true
+!xterm*jumpScroll:         true
+!xterm*multiScroll:        true
+!xterm*toolBar:            false
 
 ! https://vi.stackexchange.com/a/2361
 xterm*metaSendsEscape: true
 
-! My terminal colours (tango from gnome)
 
-! Dark mode
-!XTerm*background: #000000
+! ----------------------------------------------
+! My terminal colours (same as tango from gnome)
+! ----------------------------------------------
 
-! Lighter background
-!XTerm*background: #2E3436
-
-! Sublime background: #1A1E24
-!XTerm*background: #1A1E24
 *background: #000000
-!XTerm*foreground: #D3D7CF
 *foreground: #DDDDDD
 
-! Light mode
-!XTerm*background: #EEEEEC
-!XTerm*foreground: #2E3436
-
 *boldColors: false
-!*.color0: #2E3436
 *.color0: #626E69
 *.color1: #CC0000
 *.color2: #4E9A06
@@ -67,14 +55,7 @@ xterm*metaSendsEscape: true
 *.color5: #75507B
 *.color6: #06989A
 *.color7: #D3D7CF
-!*.color8: #626E69
 *.color8: #555753
-!*.color9: #CC0000
-!*.color10: #4E9A06
-!*.color11: #C4A000
-!*.color12: #3465A4
-!*.color13: #75507B
-!*.color14: #06989A
 *.color9: #EF2929
 *.color10: #8AE234
 *.color11: #FCE94F
@@ -83,54 +64,17 @@ xterm*metaSendsEscape: true
 *.color14: #34E2E2
 *.color15: #EEEEEC
 
-! Some manjaro default colors
-
-!*background:                      #222D31
-!*foreground:                      #d8d8d8
-!*fading:                          8
-!*fadeColor:                       black
-!*cursorColor:                     #1ABB9B
-!*pointerColorBackground:          #2B2C2B
-!*pointerColorForeground:          #16A085
-
-!! black dark/light
-!*color0:                          #222D31
-!*color8:                          #585858
-
-!! red dark/light
-!*color1:                          #ab4642
-!*color9:                          #ab4642
-
-!! green dark/light
-!*color2:                          #7E807E
-!*color10:                         #8D8F8D
-
-!! yellow dark/light
-!*color3:                          #f7ca88
-!*color11:                         #f7ca88
-
-!! blue dark/light
-!*color4:                          #7cafc2
-!*color12:                         #7cafc2
-
-!! magenta dark/light
-!*color5:                          #ba8baf
-!*color13:                         #ba8baf
-
-!! cyan dark/light
-!*color6:                          #1ABB9B
-!*color14:                         #1ABB9B
-
-!! white dark/light
-!*color7:                          #d8d8d8
-!*color15:                         #f8f8f8
-
 
 ! This makes the cursor the correct size in xterm
 Xcursor.theme: Adwaita Adwaita
 !Xcursor.size: 0
 
-URxvt.font: xft:Droid Sans Mono:style=Regular:size=10
+
+! -----------
+! URxvt stuff
+! -----------
+
+!URxvt.font: xft:Droid Sans Mono:style=Regular:size=10
 
 ! This gets ranger fonts to work, but not neovim
 !URxvt.font: 9x15,xft:TerminessTTFNerdFontMono,xft:DejaVu Sans Mono:autohint=true:size=12
