@@ -335,11 +335,7 @@ bar {
 	mode dock
 
 	#i3bar_command i3bar
-	#status_command i3status
-	#font pango: 22px
-    # https://www.reddit.com/r/i3wm/comments/eln0tt/customizing_i3bar_with_fontawesome/fdk9izg?utm_source=share&utm_medium=web2x&context=3
-	#font pango:FontAwesome5Free 22px #doesn't work for sunday
-	font pango:FontAwesome5Brands, FontAwesome5Free 22px 
+	font pango:FontAwesome 9
 	status_command i3status -c $HOME/.config/i3/i3status.conf
 	position top
 
@@ -457,8 +453,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFA
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Screenshot
-bindsym Print --release exec --no-startup-id flameshot gui -p $HOME/Pictures
-bindsym Menu --release exec --no-startup-id flameshot gui -p $HOME/Pictures
+bindsym Print --release exec --no-startup-id flameshot gui
+bindsym Menu --release exec --no-startup-id flameshot gui
 bindsym control+Print --release exec --no-startup-id flameshot full -p $HOME/Pictures
 bindsym control+Menu --release exec --no-startup-id flameshot full -p $HOME/Pictures
 
