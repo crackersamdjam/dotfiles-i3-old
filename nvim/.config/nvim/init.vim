@@ -123,6 +123,14 @@ function! Run()
 			"echo output
 			return
 		endif
+	
+	elseif index(['rkt'], extension) >= 0
+		execute('!timeout 3s racket '.@%.' < in > out 2> err')
+		if v:shell_error != 0
+			echo 'Run Failed'
+			"echo output
+			return
+		endif
 	else
 		echo 'Invalid extension'
 		return
