@@ -208,7 +208,6 @@ for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
 for_window [class="Simple-scan"] floating enable border normal
 for_window [class="SimpleScreenRecorder"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
@@ -465,7 +464,10 @@ bindsym --release ctrl+$alt+p exec --no-startup-id "colorpicker --short --one-sh
 exec_always --no-startup-id xset r rate 200 33
 
 # Redshift
-exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4500 -b 1.0:1.0
+# Toronto
+#exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4500 -b 1.0:1.0
+# SF
+exec --no-startup-id redshift -l 37.8:-122.4 -t 6500:4500 -b 1.0:1.0
 
 # Now I'm using ibus for foreign keyboards instead of this
 # https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3
