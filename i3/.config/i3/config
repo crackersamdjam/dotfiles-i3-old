@@ -29,8 +29,9 @@ bindsym $mod+n border normal
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xterm
-bindsym $mod+Shift+Return exec kitty
+#bindsym $mod+Return exec xterm
+bindsym $mod+Return exec kitty -1
+bindsym $mod+Shift+Return exec xterm
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -49,8 +50,10 @@ bindsym $mod+d exec rofi -show drun
 
 #exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
-exec --no-startup-id pulseaudio
-exec --no-startup-id pa-applet
+
+# I switched to pipewire
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
 bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
@@ -116,6 +119,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
+#exec_always --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 30%
 bindsym $mod+space focus mode_toggle
 
 # toggle sticky
@@ -289,7 +293,7 @@ exec --no-startup-id clipit
 #exec --no-startup-id start_conky_green
 # https://classicforum.manjaro.org/index.php?topic=25396.0
 exec --no-startup-id conky -c /usr/share/conky/conky_maia 
-exec --no-startup-id xautolock -time 11 -locker blurlock
+#exec --no-startup-id xautolock -time 11 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -444,12 +448,23 @@ mode "$mode_gaps_outer" {
 ###############
 
 # Pulseaudio controls
+
+exec_always --no-startup-id pactl -- set-default-source alsa_input.usb-Dell_DELL_PROFESSIONAL_SOUND_BAR_AE515-00.analog-stereo
+exec_always --no-startup-id pactl -- set-source-volume alsa_input.usb-Dell_DELL_PROFESSIONAL_SOUND_BAR_AE515-00.analog-stereo 100%
+
+exec_always --no-startup-id pactl -- set-default-sink alsa_output.usb-Dell_DELL_PROFESSIONAL_SOUND_BAR_AE515-00.analog-stereo.monitor
+exec_always --no-startup-id pactl -- set-sink-volume alsa_output.usb-Dell_DELL_PROFESSIONAL_SOUND_BAR_AE515-00.analog-stereo.monitor 30%
+
+exec_always --no-startup-id pactl -- set-default-source alsa_input.usb-Razer_Inc_Razer_Kiyo_Pro-02.analog-stereo
+exec_always --no-startup-id pactl -- set-source-volume alsa_input.usb-Razer_Inc_Razer_Kiyo_Pro-02.analog-stereo 100%
+
+exec_always --no-startup-id pactl -- set-source-volume alsa_input.pci-0000_00_1f.3.analog-stereo 20%
+exec_always --no-startup-id pactl -- set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo.monitor 50%
+
 # @DEFAULT_SINK@ used to be 0
-exec_always --no-startup-id pactl -- set-source-volume @DEFAULT_SOURCE@ 100%
-exec_always --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ 30%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute @DEFAULT_SINK@ toggle
 
 # Screenshot
 bindsym Print --release exec --no-startup-id flameshot gui
@@ -464,10 +479,9 @@ bindsym --release ctrl+$alt+p exec --no-startup-id "colorpicker --short --one-sh
 exec_always --no-startup-id xset r rate 200 33
 
 # Redshift
+#exec --no-startup-id redshift -l geoclue2
 # Toronto
-#exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4500 -b 1.0:1.0
-# SF
-exec --no-startup-id redshift -l 37.8:-122.4 -t 6500:4500 -b 1.0:1.0
+exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4500 -b 1.0:1.0
 
 # Now I'm using ibus for foreign keyboards instead of this
 # https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3
