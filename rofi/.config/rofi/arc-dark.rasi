@@ -51,7 +51,7 @@
 }
 
 #textbox {
-    background-color: @entry-background;
+    background-color: @default-background;
 }
 
 #listview {

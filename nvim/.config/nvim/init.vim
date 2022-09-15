@@ -81,9 +81,10 @@ if executable('clangd')
 		autocmd User lsp_setup call lsp#register_server({
 					\ 'name': 'clangd',
 					\ 'cmd': {server_info->['clangd']},
-					\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+					\ 'whitelist': ['c', 'cc', 'cpp', 'c++', 'objc', 'objcpp'],
 					\ })
 		autocmd FileType c setlocal omnifunc=lsp#complete
+		autocmd FileType cc setlocal omnifunc=lsp#complete
 		autocmd FileType cpp setlocal omnifunc=lsp#complete
 		autocmd FileType objc setlocal omnifunc=lsp#complete
 		autocmd FileType objcpp setlocal omnifunc=lsp#complete
@@ -113,6 +114,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
+	" K to get error msg?
     nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
     nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
