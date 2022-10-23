@@ -1,7 +1,7 @@
 set nocompatible | filetype indent plugin on | syn on
 
 set autoindent
-set nomodeline " disable modeline vulnerability
+set nomodeline
 set encoding=utf8
 
 " https://vim.fandom.com/wiki/Indenting_source_code
@@ -86,6 +86,7 @@ if executable('clangd')
 		autocmd FileType c setlocal omnifunc=lsp#complete
 		autocmd FileType cc setlocal omnifunc=lsp#complete
 		autocmd FileType cpp setlocal omnifunc=lsp#complete
+		autocmd FileType c++ setlocal omnifunc=lsp#complete
 		autocmd FileType objc setlocal omnifunc=lsp#complete
 		autocmd FileType objcpp setlocal omnifunc=lsp#complete
 	augroup end
@@ -100,6 +101,7 @@ if executable('pyls')
         \ })
 endif
 
+" Lsp key blindings in here
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -252,6 +254,12 @@ endfunction
 
 :map <M-r> :call Run()<Cr>
 :map <M-d> :call Debug()<Cr>
+
+
+" ===== Key bindings =====
+imap kj <Esc>
+" much nicer than having to click Esc
+
 
 
 " ===== Window Management =====

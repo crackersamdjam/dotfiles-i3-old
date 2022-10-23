@@ -14,10 +14,10 @@ XTerm*vt100.translations: #override \
     Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
 
 ! https://github.com/saimn/dotfiles/blob/master/Xresources#L44
-xterm*font:           xft:DejaVu Sans Mono:style=Book:size=12
-xterm*boldFont:       xft:DejaVu Sans Mono:style=Bold:size=12
-xterm*italicFont:     xft:DejaVu Sans Mono:style=Oblique:size=12
-xterm*boldItalicFont: xft:DejaVu Sans Mono:style=BoldOblique:size=12
+xterm*font:           xft:DejaVu Sans Mono:style=Book:size=24
+xterm*boldFont:       xft:DejaVu Sans Mono:style=Bold:size=24
+xterm*italicFont:     xft:DejaVu Sans Mono:style=Oblique:size=24
+xterm*boldItalicFont: xft:DejaVu Sans Mono:style=BoldOblique:size=24
 
 ! Leftover stuff from https://github.com/kuriot/xresources-breeze-theme/blob/master/.Xresources
 !xterm*VT100.geometry:     80x25
