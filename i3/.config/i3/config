@@ -16,6 +16,8 @@ font pango:DejaVu Sans Mono 9
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
 default_floating_border normal
+for_window [class="^.*"] border pixel 1
+# bug: https://gist.github.com/lirenlin/9892945?permalink_comment_id=4345186#gistcomment-4345186
 
 # Hide borders
 hide_edge_borders none
@@ -32,6 +34,7 @@ floating_modifier $mod
 #bindsym $mod+Return exec xterm
 bindsym $mod+Return exec xterm
 bindsym $mod+Shift+Return exec kitty -1
+bindsym $mod+q exec emacs
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -59,9 +62,10 @@ bindsym $mod+Ctrl+m exec pavucontrol
 ################################################################################################
 
 # Screen brightness controls
+# -- after new update, it looks like xfce4-power-manager is taking over the brightness keys
 #bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
 #bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
-bindsym XF86MonBrightnessUp exec "brightnessctl set +2%; notify-send 'brightness up'"
+bindsym XF86MonBrightnessUp exec "brightnessctl set 2%+; notify-send 'brightness up'"
 bindsym XF86MonBrightnessDown exec "brightnessctl set 2%-; notify-send 'brightness down'"
 
 # Start Applications

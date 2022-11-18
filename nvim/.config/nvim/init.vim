@@ -39,6 +39,9 @@ set clipboard+=unnamedplus
 set background=light
 hi QuickFixLine guibg=Black
 
+" run my printcolors cmd to see available colors
+set hlsearch
+hi Search ctermbg=Black
 
 " ===== Plugins =====
 
@@ -81,8 +84,10 @@ if executable('clangd')
 		autocmd User lsp_setup call lsp#register_server({
 					\ 'name': 'clangd',
 					\ 'cmd': {server_info->['clangd']},
-					\ 'whitelist': ['c', 'cc', 'cpp', 'c++', 'objc', 'objcpp'],
+					\ 'whitelist': ['h', 'hpp', 'c', 'cc', 'cpp', 'c++', 'objc', 'objcpp'],
 					\ })
+		autocmd FileType h setlocal omnifunc=lsp#complete
+		autocmd FileType hpp setlocal omnifunc=lsp#complete
 		autocmd FileType c setlocal omnifunc=lsp#complete
 		autocmd FileType cc setlocal omnifunc=lsp#complete
 		autocmd FileType cpp setlocal omnifunc=lsp#complete
