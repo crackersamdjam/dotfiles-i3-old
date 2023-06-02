@@ -60,6 +60,7 @@ Plug 'mbbill/undotree'
 Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', {'for': 'tex'}
 Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'altercation/vim-colors-solarized'
 " YCM https://github.com/ecnerwala/dotfiles/blob/master/vim/.config/nvim/init.vim
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clangd-completer' }
@@ -71,7 +72,16 @@ Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'ajh17/vimcompletesme'
 Plug 'preservim/nerdtree'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 call plug#end()
+
+
+" ===== Telescope =====
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
 " ===== Vim-lsp =====
@@ -141,7 +151,7 @@ augroup END
 " ===== Run commands =====
 
 function! Run()
-	w
+	wa
 	let file_name = expand('%:t:r')
 	let extension = expand('%:e')
 	
@@ -208,7 +218,7 @@ function! Run()
 endfunction
 
 function! Debug()
-	w
+	wa
 	let file_name = expand('%:t:r')
 	let extension = expand('%:e')
 	

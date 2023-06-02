@@ -30,11 +30,10 @@ bindsym $mod+n border normal
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# start a terminal
-#bindsym $mod+Return exec xterm
 bindsym $mod+Return exec xterm
 bindsym $mod+Shift+Return exec kitty -1
 bindsym $mod+q exec emacs
+bindsym $mod+o exec dolphin
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -208,7 +207,8 @@ for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
 for_window [class="octopi"] floating enable
-for_window [class="Org.gnome.Nautilus"] floating enable
+for_window [class="org.gnome.Nautilus"] floating enable
+for_window [class="dolphin"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="qt5ct"] floating enable sticky enable border normal
@@ -283,10 +283,9 @@ bindsym $mod+9 exec --no-startup-id blurlock
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 # Disable shadows
-exec --no-startup-id nitrogen --restore; sleep 1; picom -CGb
+#exec --no-startup-id nitrogen --restore; sleep 1; picom -CGb
 # To disable picom, just replace above with the next line
-#exec --no-startup-id nitrogen --restore
-#exec --no-startup-id manjaro-hello
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 #exec --no-startup-id pamac-tray
@@ -473,8 +472,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute @DEFAULT_SINK@
 # Screenshot
 bindsym Print --release exec --no-startup-id flameshot gui
 bindsym Menu --release exec --no-startup-id flameshot gui
-bindsym control+Print --release exec --no-startup-id flameshot full -p $HOME/Pictures
-bindsym control+Menu --release exec --no-startup-id flameshot full -p $HOME/Pictures
+bindsym control+Print --release exec --no-startup-id flameshot full -p $HOME/Downloads
+bindsym control+Menu --release exec --no-startup-id flameshot full -p $HOME/Downloads
 
 # Get colour id
 bindsym --release ctrl+$alt+p exec --no-startup-id "colorpicker --short --one-shot --preview | xsel -b"
@@ -484,8 +483,14 @@ exec_always --no-startup-id xset r rate 200 33
 
 # Redshift
 #exec --no-startup-id redshift -l geoclue2
+# SF
+#exec --no-startup-id redshift -l 37.6:-122.3 -t 6500:4000 -b 1.0:1.0
+# Chicago
+exec --no-startup-id redshift -l 41.9:-87.6 -t 6500:4000 -b 1.0:1.0
 # Toronto
-exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4500 -b 1.0:1.0
+#exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4000 -b 1.0:1.0
+# Berlin
+#exec --no-startup-id redshift -l 52.5:13.4 -t 6500:4000 -b 1.0:1.0
 
 # Now I'm using ibus for foreign keyboards instead of this
 # https://superuser.com/questions/1147320/how-to-change-keyboard-layout-in-i3

@@ -1,3 +1,6 @@
+! https://askubuntu.com/questions/968328/setting-the-scaleheight-attribute-of-an-xterm-while-within-the-xterm
+XTerm.scaleHeight: 2
+
 Xft.dpi:       192
 Xcursor.size:  48
 Xft.antialias: true
@@ -77,17 +80,17 @@ Xcursor.theme: Adwaita Adwaita
 !URxvt.font: xft:Droid Sans Mono:style=Regular:size=10
 
 ! This gets ranger fonts to work, but not neovim
-!URxvt.font: 9x15,xft:TerminessTTFNerdFontMono,xft:DejaVu Sans Mono:autohint=true:size=12
+!URxvt.font: 9x15,xft:TerminessTTFNerdFontMono,xft:DejaVu Sans Mono:autohint=true:size=26
 
 ! later ones are fallbacks, so...
 ! I think Droid Sans Mono is bad
 
 ! what DM_Oscar uses
-!URxvt.font: xft:Monospace:pixelsize=24
-!URxvt.boldFont: xft:Monospace:bold:pixelsize=24
-!URxvt.italicFont: xft:Monospace:italic:pixelsize=24
-!URxvt.boldItalicFont: xft:Monospace:bold:italic:pixelsize=24
-!URxvt.letterSpace: -1
+URxvt.font: xft:Monospace:pixelsize=26
+URxvt.boldFont: xft:Monospace:bold:pixelsize=26
+URxvt.italicFont: xft:Monospace:italic:pixelsize=26
+URxvt.boldItalicFont: xft:Monospace:bold:italic:pixelsize=26
+URxvt.letterSpace: -1
 
 ! alternative font settings with 'terminus':
 !URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
@@ -96,7 +99,7 @@ Xcursor.theme: Adwaita Adwaita
 
 URxvt.depth:                      32
 !URxvt.background:                 [100]#222D31
-URxvt.background:                 [100]#1A1E24
+!URxvt.background:                 [100]#1A1E24
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
