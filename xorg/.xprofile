@@ -21,6 +21,11 @@ export QT_FONT_DPI=96
 # Flatpak gtk apps will be too large when I do this...
 
 
+# Dark mode
+# https://wiki.archlinux.org/title/Dark_mode_switching
+#export GTK_THEME=Breeze-Dark
+
+
 # https://wiki.archlinux.org/index.php/IBus#Other_desktop_environments
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
