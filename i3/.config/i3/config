@@ -29,7 +29,7 @@ bindsym $mod+n border normal
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-bindsym $mod+Return exec xterm
+bindsym $mod+Return exec kitty -1
 bindsym $mod+Shift+Return exec kitty -1
 bindsym $mod+q exec emacs
 bindsym $mod+o exec dolphin
@@ -461,6 +461,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute @DEFAULT_SINK@
 # Screenshot
 bindsym Print --release exec --no-startup-id flameshot gui
 bindsym Menu --release exec --no-startup-id flameshot gui
+bindsym $mod+Shift+s --release exec --no-startup-id flameshot gui
 bindsym control+Print --release exec --no-startup-id flameshot full -p $HOME/Downloads
 bindsym control+Menu --release exec --no-startup-id flameshot full -p $HOME/Downloads
 
@@ -475,9 +476,9 @@ exec_always --no-startup-id xset r rate 200 33
 # SF
 #exec --no-startup-id redshift -l 37.6:-122.3 -t 6500:4000 -b 1.0:1.0
 # Chicago
-exec --no-startup-id redshift -l 41.9:-87.6 -t 6500:4000 -b 1.0:1.0
+#exec --no-startup-id redshift -l 41.9:-87.6 -t 6500:4000 -b 1.0:1.0
 # Toronto
-#exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4000 -b 1.0:1.0
+exec --no-startup-id redshift -l 43.7:-79.4 -t 6500:4000 -b 1.0:1.0
 # Berlin
 #exec --no-startup-id redshift -l 52.5:13.4 -t 6500:4000 -b 1.0:1.0
 

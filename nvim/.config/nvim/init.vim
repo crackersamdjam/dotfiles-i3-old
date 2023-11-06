@@ -31,8 +31,8 @@ set autoread " autoread files
 au FocusGained,BufEnter * :checktime "trigger autoread whenever buffer switched or refocused on vim
 set mouse=a " use mouse for scroll or window size
 
-" Clipboard
-" https://www.reddit.com/r/neovim/comments/jzlbsw/how_can_i_copy_text_from_nvim_to_system_clipboard/
+" :h clipboard
+" :checkhealth
 set clipboard+=unnamedplus
 
 " https://github.com/Ninjaclasher/scripts-and-config/blob/master/dotfiles/nvim/.config/nvim/init.vim
@@ -70,7 +70,7 @@ Plug 'altercation/vim-colors-solarized'
 " https://jonasdevlieghere.com/vim-lsp-clangd/
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'ajh17/vimcompletesme'
+"Plug 'ajh17/vimcompletesme' "no longer exists?
 Plug 'preservim/nerdtree'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
@@ -314,8 +314,8 @@ let b:tex_stylish=1
 let g:vimtex_quickfix_open_on_warning=0
 let g:vimtex_quickfix_mode=0
 let g:vimtex_view_general_viewer='zathura'
-let g:vimtex_compiler_latexmk={'build_dir':'aux'}
-let g:vimtex_syntax_packages={'amsmath':{'load':2}, 'tikz':{'load':2}, 'markdown':{'load':2}}
+let g:vimtex_compiler_latexmk = {'aux_dir': 'aux'}
+"let g:vimtex_syntax_packages={'amsmath':{'load':2}, 'tikz':{'load':2}, 'markdown':{'load':2}}
 "`load`  Specify when to load the package syntax addon.
 "      0 = disable this syntax package
 "      1 = enable this syntax package if it is detected (DEFAULT)
